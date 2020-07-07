@@ -120,6 +120,20 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+## Outputs
+
+An action output will be created for each output of the terraform configuration.
+
+For example, with the terraform config:
+```hcl
+output "service_hostname" {
+  value = "example.com"
+}
+```
+
+Running this action will produce a "service_hostname" output with the same value.
+Only outputs with primitive types (number, string, bool) will be retrieved.
+
 ## Example usage
 
 ### Apply PR approved plans
@@ -132,7 +146,8 @@ name: Apply
 
 on:
   push:
-    branch: master
+    branches:
+      - master
 
 jobs:
   apply:
@@ -160,7 +175,8 @@ name: Apply
 
 on:
   push:
-    branch: master
+    branches:
+      - master
 
 jobs:
   apply:
@@ -183,7 +199,7 @@ This example workflow runs every morning and updates a TLS certificate
 if necessary.
 
 ```yaml
-name: Plan
+name: Rotate certs
 
 on:
   schedule:
@@ -192,7 +208,7 @@ on:
 jobs:
   apply:
     runs-on: ubuntu-latest
-    name: Apply approved plan
+    name: Rotate certs
     steps:
       - name: Checkout
         uses: actions/checkout@v2
