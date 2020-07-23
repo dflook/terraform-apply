@@ -44,7 +44,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions:v1.3.0
+  image: docker://danielflook/terraform-github-actions:v1.3.1
   entrypoint: /entrypoints/apply.sh
 
 branding:
