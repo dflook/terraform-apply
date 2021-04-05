@@ -115,16 +115,56 @@ the master branch:
 
 ## Environment Variables
 
-### `GITHUB_TOKEN`
+* `GITHUB_TOKEN`
 
-The GitHub authorization token to use to fetch an approved plan from a PR.
-The token provided by GitHub Actions can be used - it can be passed by
-using the `${{ secrets.GITHUB_TOKEN }}` expression, e.g.
+  The GitHub authorization token to use to fetch an approved plan from a PR.
+  The token provided by GitHub Actions can be used - it can be passed by
+  using the `${{ secrets.GITHUB_TOKEN }}` expression, e.g.
 
-```yaml
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
+  ```yaml
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ```
+
+  - Type: string
+  - Optional
+
+* `TERRAFORM_CLOUD_TOKENS`
+
+  API tokens for terraform cloud hosts, of the form `<host>=<token>`. Multiple tokens may be specified, one per line.
+  These tokens may be used with the `remote` backend and for fetching required modules from the registry.
+
+  e.g for terraform cloud:
+  ```yaml
+  env:
+    TERRAFORM_CLOUD_TOKENS: app.terraform.io=${{ secrets.TF_CLOUD_TOKEN }}
+  ```
+
+  With Terraform Enterprise or other registries:
+  ```yaml
+  env:
+    TERRAFORM_CLOUD_TOKENS: |
+      app.terraform.io=${{ secrets.TF_CLOUD_TOKEN }}
+      terraform.example.com=${{ secrets.TF_REGISTRY_TOKEN }}
+  ```
+
+  - Type: string
+  - Optional
+
+* `TERRAFORM_SSH_KEY`
+
+  A SSH private key that terraform will use to fetch git module sources.
+
+  This should be in PEM format.
+
+  For example:
+  ```yaml
+  env:
+    TERRAFORM_SSH_KEY: ${{ secrets.TERRAFORM_SSH_KEY }}
+  ```
+
+  - Type: string
+  - Optional
 
 ## Outputs
 
