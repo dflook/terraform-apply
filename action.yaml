@@ -18,10 +18,14 @@ inputs:
     description: Path to a backend config file
     required: false
     default: ""
+  variables:
+    description: Variable definitions
+    required: false
   var:
     description: Comma separated list of vars to set, e.g. 'foo=bar'
     required: false
     default: ""
+    deprecationMessage: Use the variables input instead.
   var_file:
     description: Comma separated list of var file paths
     required: false
@@ -44,7 +48,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions:v1.8.0
+  image: docker://danielflook/terraform-github-actions:v1.9.0
   entrypoint: /entrypoints/apply.sh
 
 branding:
