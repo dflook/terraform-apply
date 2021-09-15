@@ -5,7 +5,8 @@ author: Daniel Flook
 inputs:
   path:
     description: Path to the terraform configuration
-    required: true
+    required: false
+    default: .
   workspace:
     description: Name of the terraform workspace
     required: false
@@ -48,7 +49,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:b62775ff029cad107891a59d535448e31d81dc0b65cdd6b51c422ad7c62ab7e3
+  image: docker://danielflook/terraform-github-actions@sha256:182bd125c524cdabb9f92f12edeffaa897e884a97979e44e1cc67e7fa30bdd86
   entrypoint: /entrypoints/apply.sh
 
 branding:

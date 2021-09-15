@@ -38,7 +38,8 @@ These input values must be the same as any `terraform-plan` for the same configu
   Path to the terraform configuration to apply
 
   - Type: string
-  - Required
+  - Optional
+  - Default: The action workspace
 
 * `workspace`
 
@@ -50,7 +51,7 @@ These input values must be the same as any `terraform-plan` for the same configu
 
 * `label`
 
-  An friendly name for the environment the terraform configuration is for.
+  A friendly name for the environment the terraform configuration is for.
   This will be used in the PR comment for easy identification.
 
   It must be the same as the `label` used in the corresponding `terraform-plan` command.
@@ -270,12 +271,6 @@ These input values must be the same as any `terraform-plan` for the same configu
   For example:
   ```yaml
   env:
-    TERRAFORM_PRE_RUN: |
-      # Install latest Azure CLI
-      curl -skL https://aka.ms/InstallAzureCLIDeb | bash
-      
-      # Install postgres client
-      apt-get install -y --no-install-recommends postgresql-client
     TERRAFORM_HTTP_CREDENTIALS: |
       example.com=dflook:${{ secrets.HTTPS_PASSWORD }}
       github.com/dflook/terraform-github-actions.git=dflook-actions:${{ secrets.ACTIONS_PAT }}
