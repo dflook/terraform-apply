@@ -49,7 +49,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:7340e0fda478b550b89feaa389a4397946e29a841f86ac39397a771ba205e06e
+  image: docker://danielflook/terraform-github-actions@sha256:f5aab4390e96e8211b35c9b6caa903ef692b23d3138b17901c145f0505f0dd22
   entrypoint: /entrypoints/apply.sh
 
 branding:
