@@ -43,13 +43,17 @@ inputs:
     description: Automatically approve and apply plan
     default: false
   target:
-    description: List of targets to apply against, one per line
+    description: List of resources to target for the apply, one per line
+    required: false
+    default: ""
+  replace:
+    description: List of resources to replace if an update is required, one per line
     required: false
     default: ""
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:cc54d267707eba1936ab4665441c98abc476ff38da89456211bf287d11798820
+  image: docker://danielflook/terraform-github-actions@sha256:9df1c05b684e3efe287162baa09a1db81a50ba94a295e2bdf1f8a375bf2bbd3f
   entrypoint: /entrypoints/apply.sh
 
 branding:
