@@ -51,9 +51,17 @@ inputs:
     required: false
     default: ""
 
+outputs:
+  text_plan_path:
+    description: Path to a file in the workspace containing the generated plan in human readble format. This won't be set if the backend type is `remote` and `auto_approve` is `true`
+  json_plan_path:
+    description: Path to a file in the workspace containing the generated plan in JSON format. This won't be set if the backend type is `remote`.
+  failure-reason:
+    description: The reason for the build failure. May be `apply-failed` or `plan-changed`.
+
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:282ede87350cce4ac85bd8e402e56e825ee1ddb8b8574fea5b869c39f1a50730
+  image: docker://danielflook/terraform-github-actions@sha256:e7815bf86d3acb10bf9e13f04d01a1594c99b11cfc342d1caaddc221905ed6fb
   entrypoint: /entrypoints/apply.sh
 
 branding:
