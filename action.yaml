@@ -59,10 +59,12 @@ outputs:
     description: Path to a file in the workspace containing the generated plan in JSON format. This won't be set if the backend type is `remote`.
   failure-reason:
     description: The reason for the build failure. May be `apply-failed` or `plan-changed`.
+  run_id:
+    description: If the root module uses the `remote` or `cloud` backend in remote execution mode, this output will be set to the remote run id.
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:17751f4256104e52a4383703b7db8455cdb183cb9f0cb9d7e49e7263e87f51ff
+  image: docker://danielflook/terraform-github-actions@sha256:32ae948030e86c4a1d88709773922ed818bf3ccee0134a1b86fa269a07d22d39
   entrypoint: /entrypoints/apply.sh
 
 branding:
