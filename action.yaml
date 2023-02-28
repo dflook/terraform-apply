@@ -51,6 +51,10 @@ inputs:
     description: List of resources to replace if an update is required, one per line
     required: false
     default: ""
+  destroy:
+    description: Create and apply a plan to destroy all resources
+    required: false
+    default: "false"
 
 outputs:
   text_plan_path:
@@ -64,7 +68,7 @@ outputs:
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:dc95f716c56bc6b50bd8b901e2b284eeb4ed9e18373fffb92a8f4b564f85044e
+  image: docker://danielflook/terraform-github-actions@sha256:b59ad5deb4b545f552bdc6cfa558fe4655e9b75d501dde8cb5a3f93a438fd519
   entrypoint: /entrypoints/apply.sh
 
 branding:
