@@ -1,14 +1,14 @@
 name: terraform-apply
-description: Apply terraform plan
+description: Apply a Terraform plan
 author: Daniel Flook
 
 inputs:
   path:
-    description: Path to the terraform configuration
+    description: Path to the Terraform configuration
     required: false
     default: .
   workspace:
-    description: Name of the terraform workspace
+    description: Name of the Terraform workspace
     required: false
     default: default
   backend_config:
@@ -68,7 +68,7 @@ outputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/dflook/terraform-github-actions@sha256:445be2ccdfef4d1d3bd258f00582319c886969b76c1b848925022f8cbe4c6c7b
+  image: docker://ghcr.io/dflook/terraform-github-actions@sha256:2fa1462c0d719834b0dd18acf08914e306405b8d8538adb1b4db8ef940dfe6ba
   entrypoint: /entrypoints/apply.sh
 
 branding:
