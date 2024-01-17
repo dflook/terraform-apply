@@ -72,7 +72,7 @@ outputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/dflook/terraform-github-actions@sha256:1a3791b763b6aae2d68e5f724e12415dbc9da7190f9fe164651461787d43fa65
+  image: docker://ghcr.io/dflook/terraform-github-actions@sha256:b118825cdb351b48e6dff986984013d1343cd5aace36fcdf457528cf01954f40
   entrypoint: /entrypoints/apply.sh
 
 branding:
