@@ -30,17 +30,6 @@ inputs:
       List of tfvars files to use, one per line.
       Paths should be relative to the GitHub Actions workspace
     required: false
-  var:
-    description: |
-      Comma separated list of Terraform vars to set.
-      This is deprecated due to the following limitations:
-      - Only primitive types can be set with `var` - number, bool and string.
-      - String values may not contain a comma.
-      - Values set with `var` will be overridden by values contained in `var_file`s
-      - Does not work with the `remote` backend
-      You can change from `var` to `variables` by putting each variable on a separate line and ensuring each string value is quoted.
-    required: false
-    deprecationMessage: Use the variables input instead.
   backend_config:
     description: List of Terraform backend config values, one per line.
     required: false
@@ -154,7 +143,7 @@ outputs:
 
 runs:
   using: docker
-  image: docker://danielflook/terraform-github-actions@sha256:4cf47837e26f42c9835b28c514215a77a6b523bd2c1cbfeb8b9e32f1ccc5d7c0
+  image: docker://danielflook/terraform-github-actions@sha256:16ed5f994e78b4550c2eb5e427d5567ef6fc0d8f5ef9579b12aecadec4f62c96
   entrypoint: /entrypoints/apply.sh
 
 branding:
